@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VotingApp.Entities;
 
@@ -10,9 +11,11 @@ using VotingApp.Entities;
 namespace VotingApp.Migrations
 {
     [DbContext(typeof(DbContextEF))]
-    partial class DbContextEFModelSnapshot : ModelSnapshot
+    [Migration("20240728214633_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

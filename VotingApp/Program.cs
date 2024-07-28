@@ -35,13 +35,27 @@ public class Program
             Console.WriteLine("Enter Your Name");
             nameI = Console.ReadLine();
 
+            int ageI;
+            string ageI_str;
+
+            Console.WriteLine("Enter Your Age");
+            ageI_str = Console.ReadLine();
+            while (!Validator.isInt(ageI_str))
+            {
+                Console.WriteLine("This is not a number. Please enter a number");
+                ageI_str = Console.ReadLine();
+            }
+
+            int.TryParse(ageI_str, out ageI);
+
             // Create Presidents
 
-            presidentDao.Create(new President { Name = "Kamala Harris", Party = Party.Democratic });
+            //presidentDao.Create(new President { Name = "Kamala Harris", Party = Party.Democratic });
 
-            presidentDao.Create(new President{Name = "Joe Biden", Party = Party.Democratic});
+            //presidentDao.Create(new President{Name = "Joe Biden", Party = Party.Democratic});
 
-            presidentDao.Create(new President{Name = "Donald Trump", Party = Party.Republican});
+            //presidentDao.Create(new President{Name = "Donald Trump", Party = Party.Republican});
+            // End of Presidents creation
 
 Console.Clear();
 Console.OutputEncoding = Encoding.UTF8;
@@ -82,7 +96,7 @@ while (!isSelected)
 	}
 }
 
-userDao.Create(new User { Name = nameI, PresidentId = option, President = presidentDao.GetById(option) });
+userDao.Create(new User { Name = nameI, Age = ageI, PresidentId = option, President = presidentDao.GetById(option) });
 Console.WriteLine($"\n{decorator}{nameI}, You've voted for {Presidents[option]}.");
 
         }
