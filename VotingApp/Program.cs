@@ -30,27 +30,10 @@ public class Program
             UserService userService = new UserService(userDao);
             UserController userController = new UserController(userService);
 
-            //User Input Begin
             string nameI;
-            //int ageI;
-            //string ageI_;
-            //string emailI;
-            //string partyI;
-            //int presidentIDI;
-            //President presidentI;
 
             Console.WriteLine("Enter Your Name");
             nameI = Console.ReadLine();
-            //Console.WriteLine("Enter Your Age");
-            //ageI_ =Console.ReadLine();
-            //Int32.TryParse(ageI_, out ageI);
-            //Console.WriteLine(ageI);
-            //Console.WriteLine("Enter Your Email");
-            //emailI = Console.ReadLine();
-            //Console.WriteLine("Enter the party you support");
-            //partyI = Console.ReadLine();
-            //Console.WriteLine("");
-            //User Input End
 
             // Create Presidents
 
@@ -59,32 +42,6 @@ public class Program
             presidentDao.Create(new President{Name = "Joe Biden", Party = Party.Democratic});
 
             presidentDao.Create(new President{Name = "Donald Trump", Party = Party.Republican});
-
-            // End of Creating Presidents
-
-            //    ICollection<President> presidents = presidentDao.GetAll();
-
-            //    userDao.Create(new User { Name = "Tim Wells", Age = 34, Email = "Tim@yahoo.com", Party = Party.Democratic, PresidentId = 3, President = presidentDao.GetById(1) });
-
-            //    userDao.Create(new User { Name = "Ben Wells", Age = 44, Email = "Ben@yahoo.com", Party = Party.Democratic, PresidentId = 3, President = presidentDao.GetById(2) });
-
-            //    userDao.Create(new User { Name = "John Wells", Age = 44, Email = "Ben@yahoo.com", Party = Party.Democratic, PresidentId = 3, President = presidentDao.GetById(2) });
-
-            //    userDao.Create(new User { Name = "Sam Wells", Age = 44, Email = "Ben@yahoo.com", Party = Party.Democratic, PresidentId = 3, President = presidentDao.GetById(1) });
-
-            //    userDao.Create(new User { Name = "Zack Wells", Age = 54, Email = "Ben@yahoo.com", Party = Party.Republican, PresidentId = 3, President = presidentDao.GetById(3) });
-
-            //    userDao.Create(new User { Name = "Sarah Connor", Age = 34, Email = "Ben@yahoo.com", Party = Party.Republican, PresidentId = 3, President = presidentDao.GetById(3) });
-
-            //    userDao.Create(new User { Name = "Sam John", Age = 34, Email = "Ben@yahoo.com", Party = Party.Republican, PresidentId = 3, President = presidentDao.GetById(3) });
-
-            //    Console.WriteLine(presidents);
-
-            //       foreach (var president in presidents)
-            //     {
-            //         Console.WriteLine(president);
-            //     }
-            
 
 Console.Clear();
 Console.OutputEncoding = Encoding.UTF8;
@@ -125,7 +82,6 @@ while (!isSelected)
 	}
 }
 
-//Console.WriteLine($"\n{decorator}You selected Option {option}");
 userDao.Create(new User { Name = nameI, PresidentId = option, President = presidentDao.GetById(option) });
 Console.WriteLine($"\n{decorator}{nameI}, You've voted for {Presidents[option]}.");
 
