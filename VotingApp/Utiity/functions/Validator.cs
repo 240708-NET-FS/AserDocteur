@@ -1,3 +1,4 @@
+namespace VotingApp.Utility;
 public class Validator
 {
    public static bool isInt(string input)

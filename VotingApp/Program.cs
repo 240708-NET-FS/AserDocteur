@@ -1,11 +1,9 @@
 ﻿using System.Text;
-using System.Reflection.Metadata;
-using Microsoft.EntityFrameworkCore;
 using VotingApp.Controller;
 using VotingApp.DAO;
 using VotingApp.Entities;
 using VotingApp.Service;
-using VotingApp.Constants;
+using VotingApp.Utility;
 
 namespace VotingApp;
 
@@ -30,24 +28,6 @@ public class Program
             UserService userService = new UserService(userDao);
             UserController userController = new UserController(userService);
 
-            string nameI;
-
-            Console.WriteLine("Enter Your Name");
-            nameI = Console.ReadLine();
-
-            int ageI;
-            string ageI_str;
-
-            Console.WriteLine("Enter Your Age");
-            ageI_str = Console.ReadLine();
-            while (!Validator.isInt(ageI_str))
-            {
-                Console.WriteLine("This is not a number. Please enter a number");
-                ageI_str = Console.ReadLine();
-            }
-
-            int.TryParse(ageI_str, out ageI);
-
             // Create Presidents
 
             //presidentDao.Create(new President { Name = "Kamala Harris", Party = Party.Democratic });
@@ -55,7 +35,40 @@ public class Program
             //presidentDao.Create(new President{Name = "Joe Biden", Party = Party.Democratic});
 
             //presidentDao.Create(new President{Name = "Donald Trump", Party = Party.Republican});
+
             // End of Presidents creation
+
+            string nameI;
+
+            Console.WriteLine("\nEnter Your Name");
+            nameI = Console.ReadLine();
+
+            int ageI;
+            string ageI_str;
+
+            Console.WriteLine("\nEnter Your Age");
+            ageI_str = Console.ReadLine();
+            int.TryParse(ageI_str, out ageI);
+            while (!Validator.isInt(ageI_str) | ageI<18 | ageI>123)
+            {
+                int.TryParse(ageI_str, out ageI);
+                if (!Validator.isInt(ageI_str))
+                {
+                Console.WriteLine("\nThis is not a number. Please enter a number.\n");
+                } else if (ageI<18)
+                {
+                    Console.WriteLine("\nYou must be at least 18 years old to vote.\nExiting the voting portal.\n");
+                    return;
+                }else if (ageI>123)
+                {
+                    Console.WriteLine($"\nYour age of {ageI} years old seems unreasonable.\nPlease try again.\n");
+                }else if (Validator.isInt(ageI_str)&ageI>=18&ageI<=123)
+                {
+                    continue;
+                }
+                
+                ageI_str = Console.ReadLine();
+            }
 
 Console.Clear();
 Console.OutputEncoding = Encoding.UTF8;
